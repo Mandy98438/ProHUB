@@ -64,26 +64,26 @@ export const Login: React.FC<LoginProps> = ({ onToggleMode }) => {
       {/* Liquid Ether Background Effect */}
       <div className="absolute inset-0 z-0">
         <LiquidEther
-          colors={['#3b82f6', '#8b5cf6', '#06b6d4']}
-          mouseForce={15}
-          cursorSize={80}
-          isViscous={false}
-          viscous={30}
-          iterationsViscous={32}
-          iterationsPoisson={32}
-          resolution={0.6}
+          colors={['#ff0080', '#00ffff', '#8000ff', '#ff8000', '#0080ff']}
+          mouseForce={35}
+          cursorSize={120}
+          isViscous={true}
+          viscous={15}
+          iterationsViscous={16}
+          iterationsPoisson={24}
+          resolution={0.8}
           isBounce={false}
           autoDemo={true}
-          autoSpeed={0.3}
-          autoIntensity={1.8}
-          takeoverDuration={0.3}
-          autoResumeDelay={4000}
-          autoRampDuration={0.8}
+          autoSpeed={0.6}
+          autoIntensity={3.5}
+          takeoverDuration={0.25}
+          autoResumeDelay={2000}
+          autoRampDuration={1.2}
         />
       </div>
       
       {/* Overlay for better readability */}
-      <div className="absolute inset-0 z-10 bg-black/20"></div>
+      <div className="absolute inset-0 z-10 bg-black/10"></div>
       
       <div className="max-w-md w-full space-y-8 relative z-20">
         <div className="text-center">
@@ -95,7 +95,7 @@ export const Login: React.FC<LoginProps> = ({ onToggleMode }) => {
           </p>
         </div>
         
-        <form className="mt-8 space-y-6 bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl p-8 shadow-2xl" onSubmit={handleSubmit}>
+        <form className="mt-8 space-y-6 bg-white/15 backdrop-blur-xl border border-white/30 rounded-2xl p-8 shadow-2xl ring-1 ring-white/20" onSubmit={handleSubmit}>
           <Input
             label="Email Address"
             type="email"
@@ -165,11 +165,11 @@ export const Login: React.FC<LoginProps> = ({ onToggleMode }) => {
           </div>
 
           {/* Demo credentials */}
-          <div className="mt-6 p-4 bg-white/20 backdrop-blur-sm rounded-lg border border-white/30">
-            <p className="text-sm text-white font-medium mb-2">
+          <div className="mt-6 p-4 bg-gradient-to-r from-white/20 to-white/25 backdrop-blur-sm rounded-xl border border-white/40 shadow-lg">
+            <p className="text-sm text-white font-semibold mb-2 drop-shadow">
               Demo Credentials:
             </p>
-            <p className="text-xs text-white/90">
+            <p className="text-xs text-white/95 font-mono">
               Email: john@example.com<br />
               Password: password123
             </p>
