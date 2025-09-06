@@ -3,6 +3,7 @@ import { Eye, EyeOff } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { Button } from '../common/Button';
 import { Input } from '../common/Input';
+import LiquidEther from '../common/LiquidEther';
 
 interface LoginProps {
   onToggleMode: () => void;
@@ -59,18 +60,42 @@ export const Login: React.FC<LoginProps> = ({ onToggleMode }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
+    <div className="min-h-screen relative flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      {/* Liquid Ether Background Effect */}
+      <div className="absolute inset-0 z-0">
+        <LiquidEther
+          colors={['#3b82f6', '#8b5cf6', '#06b6d4']}
+          mouseForce={15}
+          cursorSize={80}
+          isViscous={false}
+          viscous={30}
+          iterationsViscous={32}
+          iterationsPoisson={32}
+          resolution={0.6}
+          isBounce={false}
+          autoDemo={true}
+          autoSpeed={0.3}
+          autoIntensity={1.8}
+          takeoverDuration={0.3}
+          autoResumeDelay={4000}
+          autoRampDuration={0.8}
+        />
+      </div>
+      
+      {/* Overlay for better readability */}
+      <div className="absolute inset-0 z-10 bg-black/20"></div>
+      
+      <div className="max-w-md w-full space-y-8 relative z-20">
         <div className="text-center">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+          <h2 className="text-3xl font-bold text-white drop-shadow-lg">
             Welcome Back
           </h2>
-          <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+          <p className="mt-2 text-sm text-white/80 drop-shadow">
             Sign in to your account to continue
           </p>
         </div>
         
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+        <form className="mt-8 space-y-6 bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl p-8 shadow-2xl" onSubmit={handleSubmit}>
           <Input
             label="Email Address"
             type="email"
@@ -106,13 +131,13 @@ export const Login: React.FC<LoginProps> = ({ onToggleMode }) => {
                 type="checkbox"
                 className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
               />
-              <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900 dark:text-gray-100">
+              <label htmlFor="remember-me" className="ml-2 block text-sm text-white">
                 Remember me
               </label>
             </div>
 
             <div className="text-sm">
-              <a href="#" className="text-blue-600 hover:text-blue-500">
+              <a href="#" className="text-blue-300 hover:text-blue-200">
                 Forgot Password?
               </a>
             </div>
@@ -127,12 +152,12 @@ export const Login: React.FC<LoginProps> = ({ onToggleMode }) => {
           </Button>
 
           <div className="text-center">
-            <p className="text-sm text-gray-600 dark:text-gray-400">
+            <p className="text-sm text-white/80">
               Don't have an account?{' '}
               <button
                 type="button"
                 onClick={onToggleMode}
-                className="text-blue-600 hover:text-blue-500 font-medium"
+                className="text-blue-300 hover:text-blue-200 font-medium"
               >
                 Create one
               </button>
@@ -140,11 +165,11 @@ export const Login: React.FC<LoginProps> = ({ onToggleMode }) => {
           </div>
 
           {/* Demo credentials */}
-          <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-            <p className="text-sm text-blue-800 dark:text-blue-300 font-medium mb-2">
+          <div className="mt-6 p-4 bg-white/20 backdrop-blur-sm rounded-lg border border-white/30">
+            <p className="text-sm text-white font-medium mb-2">
               Demo Credentials:
             </p>
-            <p className="text-xs text-blue-700 dark:text-blue-300">
+            <p className="text-xs text-white/90">
               Email: john@example.com<br />
               Password: password123
             </p>
